@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Glassmorphism Clock</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="clock">
+      <img src="clock template.svg" alt="clock_img" />
+      <div class="hour hand" id="hour"></div>
+      <div class="minute hand" id="minute"></div>
+      <div class="seconds hand" id="seconds"></div>
+    </div>
+    <script>
+      var hour = document.querySelector("#hour");
+      var minute = document.querySelector("#minute");
+      var seconds = document.querySelector("#seconds");
+
+      var set_clock = setInterval(function clock_activation() {
+        var now = new Date();
+
+        var get_hours = now.getHours();
+        var get_minute = now.getMinutes();
+        var get_seconds = now.getSeconds();
+
+        var calc_hr = get_hours * 30 + get_minute / 2;
+        var calc_min = get_minute * 6 + get_seconds / 2;
+        var calc_sec = get_seconds * 6;
+
+        hour.style.transform = "rotate(" + calc_hr + "deg)";
+        minute.style.transform = "rotate(" + calc_min + "deg)";
+        seconds.style.transform = "rotate(" + calc_sec + "deg)";
+      }, 1000);
+    </script>
+  </body>
+</html>
